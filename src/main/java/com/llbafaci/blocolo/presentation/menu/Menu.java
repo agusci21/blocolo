@@ -116,9 +116,78 @@ public class Menu implements IMenu {
 
     @Override
     public void linkTaskWithStudent() {
-        System.out.println("\n------ Estudiantes ------");
-        printAllStudents();
-        System.out.println("\n--------- Tareas ---------");
-        printAllTasks();
+
+        System.out.println();
+        System.out.println("Seleccione una tarea por Identificador");
+        for (Task task : taskRepository.getAllTasks()) {
+            System.out.println(task);
+        }
+        System.out.print("Tarea seleccionada: ");
+        String idAsString = scanner.nextLine();
+        int id = Integer.parseInt(idAsString);
+
+        Task selectedTask = null;
+        for (Task task : taskRepository.getAllTasks()) {
+            if (task.getId() == id) {
+                selectedTask = task;
+                break;
+            }
+        }
+
+        System.out.println();
+        if (selectedTask == null) {
+            System.out.println("La tarea Seleccionada no existe");
+            return;
+        } else {
+            System.out.println("Tarea seleccionada: ");
+            System.out.println(selectedTask);
+        }
+
+        System.out.println();
+        System.out.println();
+        System.out.println("Seleccione un Alumno por legajo");
+        for (Student student : studentsRepository.getAllStudents()) {
+            System.out.println(student);
+        }
+        System.out.print("Estudiante seleccionado: ");
+        String studentCodeAsString = scanner.nextLine();
+        int studentCode = Integer.parseInt(studentCodeAsString);
+
+        Student selectedStudent = null;
+        for (Student student : studentsRepository.getAllStudents()) {
+            if (student.getStudentCode() == studentCode) {
+                selectedStudent = student;
+                break;
+            }
+        }
+
+        System.out.println();
+        if (selectedStudent == null) {
+            System.out.println("El Alumno seleccionado no existe");
+            return;
+        } else {
+            System.out.println("Alumno seleccionado: ");
+            System.out.println(selectedStudent);
+        }
+        System.out.println();
+        if (!validateStudentTaskLink(selectedStudent, selectedTask)) {
+            System.out.println("El estudiante no posee las habilidades para tomar la tarea");
+        } else {
+            // TODO llamar al repositorio StudentTask y grabar el registro
+            System.out.println("El estudiante " + selectedStudent.getFirstName() + " " + selectedStudent.getLastName()
+                    + " Ha tomado la tarea " + selectedTask.getName());
+        }
+
+    }
+
+    private boolean validateStudentTaskLink(Student student, Task task) {
+        for (String capability : student.getCapabilities()) {
+            for (String tag : task.getTags()) {
+                if (capability.toLowerCase().equals(tag.toLowerCase())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

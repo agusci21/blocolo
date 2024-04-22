@@ -23,6 +23,14 @@ public class Task {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+
     @Override
     public String toString() {
         return "Identificador: " + id + "\nNombre: " + name + "\nDescripcion: " + description + "\nEtiquetas: " + tags;

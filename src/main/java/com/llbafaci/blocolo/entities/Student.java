@@ -24,15 +24,15 @@ public class Student {
         return this.studentCode;
     }
 
-    String getFirstName() {
+    public String getFirstName() {
         return this.firstName;
     };
 
-    String getLastName() {
+    public String getLastName() {
         return this.lastName;
     }
 
-    ArrayList<String> getCapabilities() {
+    public ArrayList<String> getCapabilities() {
         return this.capabilities;
     }
 
