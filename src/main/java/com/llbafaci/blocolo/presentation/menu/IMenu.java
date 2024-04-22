@@ -1,4 +1,4 @@
-package presentation.menu;
+package com.llbafaci.blocolo.presentation.menu;
 
 public interface IMenu {
     int printAllOptions();
@@ -6,4 +6,5 @@ public interface IMenu {
     void createNewStudent();
     void printAllTasks();
     void createTask();
+    void linkTaskWithStudent();
 }

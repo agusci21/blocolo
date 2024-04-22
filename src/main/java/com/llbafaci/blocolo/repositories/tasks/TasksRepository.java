@@ -1,21 +1,21 @@
-package repositories.tasks;
+package com.llbafaci.blocolo.repositories.tasks;
+
 import java.util.ArrayList;
-import entities.Task;
 
+import com.llbafaci.blocolo.entities.Task;
 
-
-public class TasksRepository implements ITasksRepository{
+public class TasksRepository implements ITasksRepository {
 
     private ArrayList<Task> tasks = new ArrayList<Task>();
 
     @Override
     public ArrayList<Task> getAllTasks() {
-       return tasks;
+        return tasks;
     }
 
     @Override
     public void createTask(Task task) {
         tasks.add(task);
     }
-    
+
 }

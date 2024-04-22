@@ -1,19 +1,23 @@
 
-package entities;
+package com.llbafaci.blocolo.entities;
 
+import java.util.ArrayList;
 
 public class Student {
     private int studentCode;
     private String firstName;
     private String lastName;
+    private ArrayList<String> capabilities;
 
     public Student(
             int studentCode,
             String firstName,
-            String lastName) {
+            String lastName,
+            ArrayList<String> capabilities) {
         this.studentCode = studentCode;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.capabilities = capabilities;
     }
 
     public int getStudentCode() {
@@ -28,12 +32,12 @@ public class Student {
         return this.lastName;
     }
 
-    public String toJsonString () {
-        return "{\n studentCode: " +studentCode + "\n firstName: " + firstName + "\n lastName: " + lastName + "\n}";
+    ArrayList<String> getCapabilities() {
+        return this.capabilities;
     }
 
-    @Override 
+    @Override
     public String toString() {
-        return  "Legajo: " + studentCode + " Nombre: " + firstName +" Apellido: " + lastName;
+        return "Legajo: " + studentCode + " Nombre: " + firstName + " Apellido: " + lastName + " Habilidades: " + capabilities.toString();
     }
 }

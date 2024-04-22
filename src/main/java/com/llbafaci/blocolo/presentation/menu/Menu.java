@@ -1,13 +1,13 @@
-package presentation.menu;
+package com.llbafaci.blocolo.presentation.menu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import entities.Student;
-import entities.Task;
-import repositories.students.*;
-import repositories.tasks.*;
+import com.llbafaci.blocolo.entities.Student;
+import com.llbafaci.blocolo.entities.Task;
+import com.llbafaci.blocolo.repositories.students.IStudentsRepository;
+import com.llbafaci.blocolo.repositories.tasks.ITasksRepository;
 
 public class Menu implements IMenu {
     private IStudentsRepository studentsRepository;
@@ -26,6 +26,7 @@ public class Menu implements IMenu {
         System.out.println("2. Agregar alumno");
         System.out.println("3. Listar Tareas");
         System.out.println("4. Agregar Tarea");
+        System.out.println("5. Vincular tarea con estudiante");
         System.out.println("Alguna letra. Salir");
 
         String selectedOption = scanner.nextLine();
@@ -56,8 +57,11 @@ public class Menu implements IMenu {
         System.out.println("Apellido: ");
         String lastName = scanner.nextLine();
         int studentCode = getLastStudentCode() + 1;
-
-        Student student = new Student(studentCode, firstName, lastName);
+        System.out.println("Habilidades: (Ingreselas separadas por ,)");
+        String capabilitiesAsString = scanner.nextLine();
+        String[] capabilities = capabilitiesAsString.split(",");
+        Student student = new Student(studentCode, firstName, lastName,
+                new ArrayList<String>(Arrays.asList(capabilities)));
         studentsRepository.addStudent(student);
     }
 
@@ -108,5 +112,13 @@ public class Menu implements IMenu {
                 description,
                 new ArrayList<String>(Arrays.asList(tags)));
         taskRepository.createTask(task);
+    }
+
+    @Override
+    public void linkTaskWithStudent() {
+        System.out.println("\n------ Estudiantes ------");
+        printAllStudents();
+        System.out.println("\n--------- Tareas ---------");
+        printAllTasks();
     }
 }

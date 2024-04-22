@@ -1,4 +1,4 @@
-package entities;
+package com.llbafaci.blocolo.entities;
 
 import java.util.ArrayList;
 

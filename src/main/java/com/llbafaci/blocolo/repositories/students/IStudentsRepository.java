@@ -1,9 +1,11 @@
-package repositories.students;
+package com.llbafaci.blocolo.repositories.students;
 
 import java.util.ArrayList;
-import entities.Student;;
+import com.llbafaci.blocolo.entities.Student;
+
 
 public interface IStudentsRepository {
     ArrayList<Student> getAllStudents();
+
     void addStudent(Student student);
 }

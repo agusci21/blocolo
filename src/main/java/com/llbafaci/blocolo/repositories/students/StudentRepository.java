@@ -1,7 +1,8 @@
-package repositories.students;
+package com.llbafaci.blocolo.repositories.students;
 
 import java.util.ArrayList;
-import entities.Student;
+
+import com.llbafaci.blocolo.entities.Student;
 
 public class StudentRepository implements IStudentsRepository {
 

@@ -1,8 +1,9 @@
-import presentation.menu.*;
-import repositories.students.IStudentsRepository;
-import repositories.students.StudentRepository;
-import repositories.tasks.ITasksRepository;
-import repositories.tasks.TasksRepository;
+
+package com.llbafaci.blocolo;
+
+import com.llbafaci.blocolo.presentation.menu.*;
+import com.llbafaci.blocolo.repositories.students.*;
+import com.llbafaci.blocolo.repositories.tasks.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,6 +23,8 @@ public class Main {
                 menu.printAllTasks();
             } else if (selectedOption == 4) {
                 menu.createTask();
+            } else if (selectedOption == 5) {
+                menu.linkTaskWithStudent();
             } else {
                 continue;
             }
