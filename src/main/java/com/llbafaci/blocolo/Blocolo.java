@@ -1,13 +1,15 @@
 
 package com.llbafaci.blocolo;
-
+import com.llbafaci.blocolo.helpers.DatabaseConnection;
 import com.llbafaci.blocolo.presentation.menu.*;
 import com.llbafaci.blocolo.repositories.students.*;
 import com.llbafaci.blocolo.repositories.tasks.*;
 
-public class Main {
+public class Blocolo {
     public static void main(String[] args) {
         // Dependencies
+        DatabaseConnection databaseConnection = DatabaseConnection.getConnection();
+        databaseConnection.connectToDatabase();
         IStudentsRepository studentsRepository = new StudentRepository();
         ITasksRepository tasksRepository = new TasksRepository();
         IMenu menu = new Menu(studentsRepository, tasksRepository);
