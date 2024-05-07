@@ -1,6 +1,9 @@
 package com.llbafaci.blocolo.entities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import com.llbafaci.blocolo.dtos.TaskDto;
 
 public class Task {
     private int id;
@@ -21,6 +24,24 @@ public class Task {
 
     public int getId() {
         return id;
+    }
+
+    public static Task fromDto(TaskDto dto) {
+        String[] tagsArray = dto.getTags().split(",");
+        ArrayList<String> tagsList = new ArrayList<>(Arrays.asList(tagsArray));
+        return new Task(dto.getId(), dto.getName(), dto.getDescription(), tagsList);
+    }
+
+    public TaskDto toDto() {
+        StringBuilder tagsString = new StringBuilder();
+        for (String tag : tags) {
+            tagsString.append(tag).append(",");
+        }
+        String tagsStr = tagsString.toString();
+        if (tagsStr.endsWith(",")) {
+            tagsStr = tagsStr.substring(0, tagsStr.length() - 1);
+        }
+        return new TaskDto(id, name, description, tagsStr);
     }
 
     public String getName() {

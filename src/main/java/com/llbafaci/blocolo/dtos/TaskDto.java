@@ -1,5 +1,6 @@
 package com.llbafaci.blocolo.dtos;
 
+import com.llbafaci.blocolo.helpers.DatabaseConnection;
 
 public class TaskDto {
     private int id;
@@ -21,6 +22,32 @@ public class TaskDto {
     public int getId() {
         return id;
     }
+
+    public static void createTableIfNotExist() {
+    String query = "CREATE TABLE IF NOT EXISTS tasks (" +
+            "id INTEGER PRIMARY KEY," +
+            "name TEXT," +
+            "description TEXT," +
+            "tags TEXT)";
+    
+    try {
+        DatabaseConnection connection = DatabaseConnection.getConnection();
+        connection.execute(query);
+        System.out.println("Tabla 'tasks' creada exitosamente.");
+    } catch (Exception e) {
+        System.out.println("Error al crear la tabla 'tasks': " + e.getMessage());
+    }
+}
+
+    public String toTable() {
+        String query = "INSERT INTO tasks (id, name, description, tags) VALUES (" +
+                id + ", '" +
+                name + "', '" +
+                description + "', '" +
+                tags + "');";
+        return query;
+    }
+    
 
     public void setId(int id) {
         this.id = id;
@@ -45,7 +72,6 @@ public class TaskDto {
     public String getTags() {
         return tags;
     }
-
 
     @Override
     public String toString() {
