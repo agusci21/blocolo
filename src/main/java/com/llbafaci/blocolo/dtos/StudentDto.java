@@ -41,6 +41,15 @@ public class StudentDto {
         this.capabilities = capabilities;
     }
 
+    public String toTable() {
+        String query = "INSERT INTO students (studentCode, firstName, lastName, capabilities) VALUES (" +
+                studentCode + ", '" +
+                firstName + "', '" +
+                lastName + "', '" +
+                capabilities + "');";
+        return query;
+    }
+
     public static void createTableIfNotExist() {
         String query = "CREATE TABLE IF NOT EXISTS students (" +
                 "studentCode INTEGER PRIMARY KEY," +

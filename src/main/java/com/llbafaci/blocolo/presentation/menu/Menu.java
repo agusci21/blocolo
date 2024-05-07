@@ -41,7 +41,7 @@ public class Menu implements IMenu {
     public void printAllStudents() {
         System.out.println();
         System.out.println("----- Todos los alumnos -----");
-        var students = studentsRepository.getAllStudents();
+        ArrayList<Student> students = studentsRepository.getAllStudents();
         for (Student student : students) {
             System.out.println(student);
         }

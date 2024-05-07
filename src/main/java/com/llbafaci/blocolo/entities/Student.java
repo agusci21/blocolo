@@ -22,6 +22,11 @@ public class Student {
         this.capabilities = capabilities;
     }
 
+    public StudentDto toDto() {
+        String capabilitiesString = String.join(",", this.capabilities);
+        return new StudentDto(this.studentCode, this.firstName, this.lastName, capabilitiesString);
+    }
+
     public int getStudentCode() {
         return this.studentCode;
     }

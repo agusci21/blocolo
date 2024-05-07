@@ -24,17 +24,15 @@ public class StudentRepository implements IStudentsRepository {
                 String lastName = result.getString("lastName");
                 String capabilities = result.getString("capabilities");
 
-                // Crear un nuevo objeto StudentDto y agregarlo a la lista
                 StudentDto student = new StudentDto(studentCode, firstName, lastName, capabilities);
                 studentsDtos.add(student);
             }
         } catch (SQLException e) {
-            // Manejar la excepción según sea necesario
             e.printStackTrace();
         }
         ArrayList<Student> students = new ArrayList<>();
 
-        for(StudentDto dto : studentsDtos){
+        for (StudentDto dto : studentsDtos) {
             students.add(Student.fromDto(dto));
             System.out.println(Student.fromDto(dto));
         }
@@ -44,7 +42,10 @@ public class StudentRepository implements IStudentsRepository {
 
     @Override
     public void addStudent(Student student) {
-        // this.students.add(student);
+        try {
+            String query = student.toDto().toTable();
+            connection.execute(query);
+        } catch (Exception e) {}
     }
 
 }
