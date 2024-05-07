@@ -3,6 +3,8 @@ package com.llbafaci.blocolo.entities;
 
 import java.util.ArrayList;
 
+import com.llbafaci.blocolo.dtos.StudentDto;
+
 public class Student {
     private int studentCode;
     private String firstName;
@@ -34,6 +36,10 @@ public class Student {
 
     public ArrayList<String> getCapabilities() {
         return this.capabilities;
+    }
+
+    public static Student fromDto(StudentDto dto) {
+        return new Student(dto.getStudentCode(), dto.getFirstName(), dto.getLastName(), dto.getCapabilities());
     }
 
     @Override

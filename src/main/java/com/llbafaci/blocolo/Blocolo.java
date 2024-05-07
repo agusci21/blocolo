@@ -12,7 +12,7 @@ import com.llbafaci.blocolo.repositories.tasks.*;
 public class Blocolo {
     public static void main(String[] args) {
 
-        DatabaseConnection.getConnection().connectToDatabase();;
+        DatabaseConnection.getConnection().connectToDatabase();
 
         // Dependencies
         IStudentsRepository studentsRepository = new StudentRepository();
