@@ -1,6 +1,5 @@
 package com.llbafaci.blocolo.dtos;
 
-import java.sql.Connection;
 import com.llbafaci.blocolo.helpers.*;
 
 public class StudentDto {
@@ -22,12 +21,12 @@ public class StudentDto {
                 "firstName TEXT," +
                 "lastName TEXT," +
                 "capabilities TEXT)";
-        
+
         try {
             DatabaseConnection connection = DatabaseConnection.getConnection();
-            connection.execute("select * from students");
+            connection.execute(query);
         } catch (Exception e) {
-            
+            System.out.println("could not create table student");
         }
     }
 }

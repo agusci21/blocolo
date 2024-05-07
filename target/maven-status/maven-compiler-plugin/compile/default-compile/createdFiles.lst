@@ -1,10 +1,10 @@
-com\llbafaci\blocolo\entities\StudentTask.class
 com\llbafaci\blocolo\presentation\menu\IMenu.class
 com\llbafaci\blocolo\helpers\DatabaseConnection.class
-com\llbafaci\blocolo\repositories\tasks\TasksRepository.class
-com\llbafaci\blocolo\entities\Task.class
 com\llbafaci\blocolo\repositories\students\IStudentsRepository.class
 com\llbafaci\blocolo\entities\Student.class
+com\llbafaci\blocolo\repositories\students\StudentRepository.class
+com\llbafaci\blocolo\entities\StudentTask.class
+com\llbafaci\blocolo\repositories\tasks\TasksRepository.class
+com\llbafaci\blocolo\entities\Task.class
 com\llbafaci\blocolo\presentation\menu\Menu.class
 com\llbafaci\blocolo\repositories\tasks\ITasksRepository.class
-com\llbafaci\blocolo\repositories\students\StudentRepository.class

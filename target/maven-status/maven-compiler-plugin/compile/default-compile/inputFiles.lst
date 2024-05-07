@@ -1,11 +1,13 @@
-D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\entities\Student.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\entities\Task.java
-D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\helpers\DatabaseConnection.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\presentation\menu\IMenu.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\repositories\students\StudentRepository.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\repositories\tasks\ITasksRepository.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\Blocolo.java
+D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\dtos\StudentDto.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\repositories\students\IStudentsRepository.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\entities\StudentTask.java
+D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\entities\Student.java
+D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\helpers\DatabaseConnection.java
+D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\helpers\TableCreatorHelper.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\repositories\tasks\TasksRepository.java
 D:\programas\facultad\programacion_avanzada\Blocolo\src\main\java\com\llbafaci\blocolo\presentation\menu\Menu.java

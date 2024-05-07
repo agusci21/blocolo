@@ -2,8 +2,17 @@ package com.llbafaci.blocolo.helpers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
 public class DatabaseConnection {
    static private DatabaseConnection instance = new DatabaseConnection();
@@ -18,22 +27,33 @@ public class DatabaseConnection {
    }
 
    public void connectToDatabase() {
+      String url = "jdbc:sqlite:D:/blocolo.db";
+      Connection connection;
+
       try {
-         String url = "jdbc:sqlite:src/main/java/com/llbafaci/blocolo/data/data.db";
          connection = DriverManager.getConnection(url);
-
-         System.out.println("Connection to SQLite has been established.");
-
-      } catch (SQLException e) {
-         System.out.println(e.getMessage());
-      } finally {
-         try {
-            if (connection != null) {
-               connection.close();
-            }
-         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+         if (connection == null) {
+            System.out.println("No se ha conectado a la base de datos");
          }
+
+         PreparedStatement preparedStatement = connection.prepareStatement("select * from students;");
+         ResultSet result = preparedStatement.executeQuery();
+
+         while (result.next()) {
+            int studentCode = result.getInt("studentCode");
+            String firstName = result.getString("firstName");
+            String lastName = result.getString("lastName");
+            String capabilities = result.getString("capabilities");
+
+            System.out.println("Student Code: " + studentCode);
+            System.out.println("First Name: " + firstName);
+            System.out.println("Last Name: " + lastName);
+            System.out.println("Capabilities: " + capabilities);
+            System.out.println("-------------------------");
+         }
+      } catch (Exception e) {
+         System.out.println(e);
+         System.out.println("ERROR");
       }
    }
 
