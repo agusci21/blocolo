@@ -34,7 +34,6 @@ public class StudentRepository implements IStudentsRepository {
 
         for (StudentDto dto : studentsDtos) {
             students.add(Student.fromDto(dto));
-            System.out.println(Student.fromDto(dto));
         }
 
         return students;
