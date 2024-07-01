@@ -1,28 +1,30 @@
 
 package com.llbafaci.blocolo;
 
-import com.llbafaci.blocolo.helpers.ProductionDatabaseConnection;
+import com.llbafaci.blocolo.helpers.ConsoleHelper;
+import com.llbafaci.blocolo.helpers.DatabaseInstance;
+import com.llbafaci.blocolo.helpers.NotOptimalConsoleHelper;
 import com.llbafaci.blocolo.helpers.TableCreatorHelper;
 import com.llbafaci.blocolo.presentation.menu.*;
 import com.llbafaci.blocolo.repositories.students.*;
 import com.llbafaci.blocolo.repositories.tasks.*;
 
-
-
 public class Blocolo {
     public static void main(String[] args) {
 
-        var connection = new ProductionDatabaseConnection(); 
-
         // Dependencies
-        IStudentsRepository studentsRepository = new StudentRepository(connection);
-        ITasksRepository tasksRepository = new TasksRepository(connection);
+        ConsoleHelper consoleHelper = new NotOptimalConsoleHelper();
+        DatabaseInstance.getInstance().connectToDatabase();
+
+        IStudentsRepository studentsRepository = new StudentRepository();
+        ITasksRepository tasksRepository = new TasksRepository();
         IMenu menu = new Menu(studentsRepository, tasksRepository);
 
         TableCreatorHelper.createTablesIfNotExist();
 
         int selectedOption;
         do {
+            consoleHelper.clearConsole();
             selectedOption = menu.printAllOptions();
             if (selectedOption == 1) {
                 menu.printAllStudents();
@@ -37,6 +39,7 @@ public class Blocolo {
             } else {
                 continue;
             }
+            consoleHelper.awaitForTap();
         } while (selectedOption > 0);
         System.out.println("----- Hasta Luego -----");
     }

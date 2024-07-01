@@ -62,6 +62,7 @@ public class StudentDto {
         try {
             connection.execute(query);
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("could not create table student");
         }
     }

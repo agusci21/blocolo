@@ -6,14 +6,11 @@ import java.util.ArrayList;
 import com.llbafaci.blocolo.entities.Task;
 import com.llbafaci.blocolo.dtos.TaskDto;
 import com.llbafaci.blocolo.helpers.DatabaseConnection;
+import com.llbafaci.blocolo.helpers.DatabaseInstance;
 
 public class TasksRepository implements ITasksRepository {
 
-    DatabaseConnection connection;
-
-    public TasksRepository(DatabaseConnection connection){
-        this.connection = connection;
-    }
+     DatabaseConnection connection = DatabaseInstance.getInstance();
 
     @Override
     public ArrayList<Task> getAllTasks() {

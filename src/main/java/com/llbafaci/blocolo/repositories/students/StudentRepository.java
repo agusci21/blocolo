@@ -7,20 +7,16 @@ import java.util.ArrayList;
 import com.llbafaci.blocolo.dtos.StudentDto;
 import com.llbafaci.blocolo.entities.Student;
 import com.llbafaci.blocolo.helpers.DatabaseConnection;
+import com.llbafaci.blocolo.helpers.DatabaseInstance;
 
 public class StudentRepository implements IStudentsRepository {
 
-    DatabaseConnection connection;
-
-    public StudentRepository(DatabaseConnection connection) {
-        this.connection = connection;
-    }
+    DatabaseConnection connection = DatabaseInstance.getInstance();
 
     @Override
     public ArrayList<Student> getAllStudents() {
         ArrayList<StudentDto> studentsDtos = new ArrayList<>();
         try {
-            connection.connectToDatabase();
             ResultSet result = connection.execute("SELECT * FROM STUDENTS");
             while (result.next()) {
                 int studentCode = result.getInt("studentCode");
