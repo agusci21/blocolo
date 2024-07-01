@@ -201,7 +201,6 @@ public class Menu implements IMenu {
 
     @Override
     public void printTaskPerStudents() {
-        System.out.println("llega");
         printAllStudents();
         System.out.println("Seleccionar id estudiante");
         String studentCodeString = scanner.nextLine();

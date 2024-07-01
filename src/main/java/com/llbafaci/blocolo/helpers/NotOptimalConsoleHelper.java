@@ -1,6 +1,6 @@
 package com.llbafaci.blocolo.helpers;
 
-public class NotOptimalConsoleHelper extends ConsoleHelper{
+public class NotOptimalConsoleHelper extends ConsoleHelper {
     @Override
     public void clearConsole(){
         for(int i = 0; i < 100; i++){
