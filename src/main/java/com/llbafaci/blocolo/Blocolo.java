@@ -6,6 +6,8 @@ import com.llbafaci.blocolo.helpers.DatabaseInstance;
 import com.llbafaci.blocolo.helpers.NotOptimalConsoleHelper;
 import com.llbafaci.blocolo.helpers.TableCreatorHelper;
 import com.llbafaci.blocolo.presentation.menu.*;
+import com.llbafaci.blocolo.repositories.studentTask.IStudentTaskRepository;
+import com.llbafaci.blocolo.repositories.studentTask.StudentTaskRepository;
 import com.llbafaci.blocolo.repositories.students.*;
 import com.llbafaci.blocolo.repositories.tasks.*;
 
@@ -18,7 +20,8 @@ public class Blocolo {
 
         IStudentsRepository studentsRepository = new StudentRepository();
         ITasksRepository tasksRepository = new TasksRepository();
-        IMenu menu = new Menu(studentsRepository, tasksRepository);
+        IStudentTaskRepository studentTaskRepository = new StudentTaskRepository();
+        IMenu menu = new Menu(studentsRepository, tasksRepository, studentTaskRepository);
 
         TableCreatorHelper.createTablesIfNotExist();
 

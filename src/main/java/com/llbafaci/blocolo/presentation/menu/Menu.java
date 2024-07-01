@@ -5,18 +5,23 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import com.llbafaci.blocolo.entities.Student;
+import com.llbafaci.blocolo.entities.StudentTask;
 import com.llbafaci.blocolo.entities.Task;
+import com.llbafaci.blocolo.repositories.studentTask.IStudentTaskRepository;
 import com.llbafaci.blocolo.repositories.students.IStudentsRepository;
 import com.llbafaci.blocolo.repositories.tasks.ITasksRepository;
 
 public class Menu implements IMenu {
     private IStudentsRepository studentsRepository;
     private ITasksRepository taskRepository;
+    private IStudentTaskRepository studentTaskRepository;
+
     private Scanner scanner = new Scanner(System.in);
 
-    public Menu(IStudentsRepository studentsRepository, ITasksRepository tasksRepostory) {
+    public Menu(IStudentsRepository studentsRepository, ITasksRepository tasksRepostory, IStudentTaskRepository studentTaskRepository) {
         this.studentsRepository = studentsRepository;
         this.taskRepository = tasksRepostory;
+        this.studentTaskRepository = studentTaskRepository;
     }
 
     @Override
@@ -77,7 +82,8 @@ public class Menu implements IMenu {
 
     int getLastTaskCode() {
         int maxValue = 0;
-        for (Task task : taskRepository.getAllTasks()) {
+        ArrayList<Task> tasks = taskRepository.getAllTasks();
+        for (Task task : tasks) {
             if (task.getId() > maxValue) {
                 maxValue = task.getId();
             }
@@ -107,7 +113,7 @@ public class Menu implements IMenu {
         String[] tags = tagsAsString.split(",");
 
         Task task = new Task(
-                getLastTaskCode(),
+                getLastTaskCode() + 1,
                 title,
                 description,
                 new ArrayList<String>(Arrays.asList(tags)));
@@ -173,7 +179,8 @@ public class Menu implements IMenu {
         if (!validateStudentTaskLink(selectedStudent, selectedTask)) {
             System.out.println("El estudiante no posee las habilidades para tomar la tarea");
         } else {
-            // TODO llamar al repositorio StudentTask y grabar el registro
+            StudentTask studentTask = new StudentTask(studentCode, id);
+            studentTaskRepository.addStudentTask(studentTask);
             System.out.println("El estudiante " + selectedStudent.getFirstName() + " " + selectedStudent.getLastName()
                     + " Ha tomado la tarea " + selectedTask.getName());
         }

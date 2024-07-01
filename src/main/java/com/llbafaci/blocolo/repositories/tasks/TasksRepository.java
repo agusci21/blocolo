@@ -39,8 +39,6 @@ public class TasksRepository implements ITasksRepository {
             String query = taskDto.toTable();
             connection.execute(query);
             System.out.println("Tarea creada exitosamente.");
-        } catch (Exception e) {
-            System.out.println("Error al crear la tarea: " + e.getMessage());
-        }
+        } catch (Exception e) {}
     }
 }

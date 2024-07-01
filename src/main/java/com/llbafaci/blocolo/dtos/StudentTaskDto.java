@@ -32,8 +32,8 @@ public class StudentTaskDto {
 
     public String toTable() {
         String query = "INSERT INTO studentsTasks (studentId, taskId) VALUES (" +
-                studentId + ", '" +
-                taskId + "', ');";
+                studentId + ", " +
+                taskId + ");";
         return query;
     }
 
