@@ -1,6 +1,7 @@
 package com.llbafaci.blocolo.dtos;
 
 import com.llbafaci.blocolo.helpers.DatabaseConnection;
+import com.llbafaci.blocolo.helpers.DatabaseInstance;
 
 public class TaskDto {
     private int id;
@@ -22,7 +23,7 @@ public class TaskDto {
     public int getId() {
         return id;
     }
-
+    static DatabaseConnection connection = DatabaseInstance.getInstance();
     public static void createTableIfNotExist() {
     String query = "CREATE TABLE IF NOT EXISTS tasks (" +
             "id INTEGER PRIMARY KEY," +
@@ -31,7 +32,6 @@ public class TaskDto {
             "tags TEXT)";
     
     try {
-        DatabaseConnection connection = DatabaseConnection.getConnection();
         connection.execute(query);
         System.out.println("Tabla 'tasks' creada exitosamente.");
     } catch (Exception e) {

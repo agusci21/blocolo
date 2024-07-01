@@ -1,7 +1,7 @@
 
 package com.llbafaci.blocolo;
 
-import com.llbafaci.blocolo.helpers.DatabaseConnection;
+import com.llbafaci.blocolo.helpers.ProductionDatabaseConnection;
 import com.llbafaci.blocolo.helpers.TableCreatorHelper;
 import com.llbafaci.blocolo.presentation.menu.*;
 import com.llbafaci.blocolo.repositories.students.*;
@@ -12,11 +12,11 @@ import com.llbafaci.blocolo.repositories.tasks.*;
 public class Blocolo {
     public static void main(String[] args) {
 
-        DatabaseConnection.getConnection().connectToDatabase();
+        var connection = new ProductionDatabaseConnection(); 
 
         // Dependencies
-        IStudentsRepository studentsRepository = new StudentRepository();
-        ITasksRepository tasksRepository = new TasksRepository();
+        IStudentsRepository studentsRepository = new StudentRepository(connection);
+        ITasksRepository tasksRepository = new TasksRepository(connection);
         IMenu menu = new Menu(studentsRepository, tasksRepository);
 
         TableCreatorHelper.createTablesIfNotExist();

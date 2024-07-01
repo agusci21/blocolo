@@ -10,7 +10,11 @@ import com.llbafaci.blocolo.helpers.DatabaseConnection;
 
 public class StudentRepository implements IStudentsRepository {
 
-    private DatabaseConnection connection = DatabaseConnection.getConnection();
+    DatabaseConnection connection;
+
+    public StudentRepository(DatabaseConnection connection) {
+        this.connection = connection;
+    }
 
     @Override
     public ArrayList<Student> getAllStudents() {

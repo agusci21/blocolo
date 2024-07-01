@@ -9,7 +9,11 @@ import com.llbafaci.blocolo.helpers.DatabaseConnection;
 
 public class TasksRepository implements ITasksRepository {
 
-    private DatabaseConnection connection = DatabaseConnection.getConnection();
+    DatabaseConnection connection;
+
+    public TasksRepository(DatabaseConnection connection){
+        this.connection = connection;
+    }
 
     @Override
     public ArrayList<Task> getAllTasks() {

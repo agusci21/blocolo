@@ -1,11 +1,14 @@
 package com.llbafaci.blocolo.dtos;
 
 import com.llbafaci.blocolo.helpers.DatabaseConnection;
+import com.llbafaci.blocolo.helpers.DatabaseInstance;
 
 public class StudentTaskDto {
 
     private int taskId;
     private int studentId;
+
+    
 
     public StudentTaskDto(int taskId, int studentId) {
         this.taskId = taskId;
@@ -19,7 +22,7 @@ public class StudentTaskDto {
                 "PRIMARY KEY (studentId, taskId))";
 
         try {
-            DatabaseConnection connection = DatabaseConnection.getConnection();
+            DatabaseConnection connection = DatabaseInstance.getInstance();
             connection.execute(query);
             System.out.println("Tabla 'StudentTask' creada exitosamente.");
         } catch (Exception e) {

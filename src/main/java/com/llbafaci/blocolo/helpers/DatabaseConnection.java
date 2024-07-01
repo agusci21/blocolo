@@ -8,19 +8,18 @@ import java.sql.Statement;
 
 
 public class DatabaseConnection {
-   static private DatabaseConnection instance = new DatabaseConnection();
-
-   static public DatabaseConnection getConnection() {
-      return instance;
-   }
+   private String url;
 
    private Connection connection = null;
 
-   private DatabaseConnection() {
+   protected DatabaseConnection(String url) {
+      this.url = url;
+   }
+   protected DatabaseConnection() {
+      this.url = "jdbc:sqlite:D:/blocolo.db";
    }
 
    public void connectToDatabase() {
-      String url = "jdbc:sqlite:D:/blocolo.db";
 
       try {
          connection = DriverManager.getConnection(url);
@@ -44,3 +43,5 @@ public class DatabaseConnection {
    }
 
 }
+
+

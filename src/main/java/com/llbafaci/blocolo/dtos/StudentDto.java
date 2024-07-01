@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.llbafaci.blocolo.helpers.*;
 
 public class StudentDto {
+
+    static DatabaseConnection connection = DatabaseInstance.getInstance();
     private int studentCode;
 
     public int getStudentCode() {
@@ -58,7 +60,6 @@ public class StudentDto {
                 "capabilities TEXT)";
 
         try {
-            DatabaseConnection connection = DatabaseConnection.getConnection();
             connection.execute(query);
         } catch (Exception e) {
             System.out.println("could not create table student");
