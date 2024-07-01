@@ -45,7 +45,7 @@ public class Blocolo {
                 continue;
             }
             consoleHelper.awaitForTap();
-        } while (selectedOption != 7);
+        } while (selectedOption > 0);
         System.out.println("----- Hasta Luego -----");
     }
 }

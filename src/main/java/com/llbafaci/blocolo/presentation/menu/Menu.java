@@ -33,7 +33,7 @@ public class Menu implements IMenu {
         System.out.println("4. Agregar Tarea");
         System.out.println("5. Vincular tarea con estudiante");
         System.out.println("6. Ver tareas por estudiante");
-        System.out.println("7. Salir");
+        System.out.println("Otra tecla. Salir");
 
         String selectedOption = scanner.nextLine();
         try {
@@ -201,8 +201,11 @@ public class Menu implements IMenu {
 
     @Override
     public void printTaskPerStudents() {
+        System.out.println("llega");
+        printAllStudents();
         System.out.println("Seleccionar id estudiante");
-        int studentCode = scanner.nextInt();
+        String studentCodeString = scanner.nextLine();
+        int studentCode = Integer.parseInt(studentCodeString);
         ArrayList<Task> tasksPerStudent = studentTaskRepository.getTasksPerStudent(studentCode);
         
         for(Task task : tasksPerStudent){
