@@ -15,7 +15,8 @@ public class Blocolo {
     public static void main(String[] args) {
 
         // Dependencies
-        ConsoleHelper consoleHelper = new NotOptimalConsoleHelper();
+        
+        ConsoleHelper consoleHelper = new NotOptimalConsoleHelper(); //TODO! Liskov
         DatabaseInstance.getInstance().connectToDatabase();
 
         IStudentsRepository studentsRepository = new StudentRepository();
