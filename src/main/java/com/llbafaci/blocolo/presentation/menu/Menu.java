@@ -32,13 +32,14 @@ public class Menu implements IMenu {
         System.out.println("3. Listar Tareas");
         System.out.println("4. Agregar Tarea");
         System.out.println("5. Vincular tarea con estudiante");
-        System.out.println("Alguna letra. Salir");
+        System.out.println("6. Ver tareas por estudiante");
+        System.out.println("7. Salir");
 
         String selectedOption = scanner.nextLine();
         try {
             return Integer.parseInt(selectedOption);
         } catch (Exception e) {
-            return -1;
+            return printAllOptions();
         }
     }
 
@@ -196,5 +197,18 @@ public class Menu implements IMenu {
             }
         }
         return false;
+    }
+
+    @Override
+    public void printTaskPerStudents() {
+        System.out.println("Seleccionar id estudiante");
+        int studentCode = scanner.nextInt();
+        ArrayList<Task> tasksPerStudent = studentTaskRepository.getTasksPerStudent(studentCode);
+        
+        for(Task task : tasksPerStudent){
+            System.out.println("--------------------");
+            System.out.println(task);
+        }
+        System.out.println("--------------------");
     }
 }

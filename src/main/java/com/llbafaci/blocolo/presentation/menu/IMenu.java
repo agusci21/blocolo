@@ -7,4 +7,5 @@ public interface IMenu {
     void printAllTasks();
     void createTask();
     void linkTaskWithStudent();
+    void printTaskPerStudents();
 }

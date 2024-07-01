@@ -39,11 +39,13 @@ public class Blocolo {
                 menu.createTask();
             } else if (selectedOption == 5) {
                 menu.linkTaskWithStudent();
+            } else if (selectedOption == 6) {
+                menu.printTaskPerStudents();
             } else {
                 continue;
             }
             consoleHelper.awaitForTap();
-        } while (selectedOption > 0);
+        } while (selectedOption != 7);
         System.out.println("----- Hasta Luego -----");
     }
 }
